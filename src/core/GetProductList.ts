@@ -11,6 +11,7 @@ class GetProductList {
       .collection("products")
       .withConverter(productConverter)
       .orderBy("createdAt", "desc")
+      .limit(8)
       .get();
 
     doc.forEach((doc) => {

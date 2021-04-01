@@ -15,6 +15,7 @@ const ImageContentHidden: FC<ImageContentHiddenProps> = ({
   <div className={styles.image_content_hidden}>
     {images.map((v, i) => (
       <div
+        key={i}
         style={{
           width: "inherit",
           height: "inherit",
@@ -22,7 +23,7 @@ const ImageContentHidden: FC<ImageContentHiddenProps> = ({
           transform: `translateX(${imageActive * -100}%)`,
         }}
       >
-        <Image key={i} source={v} />
+        <Image source={v} />
       </div>
     ))}
   </div>

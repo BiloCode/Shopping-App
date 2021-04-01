@@ -1,18 +1,26 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 import Head from "next/head";
 import styles from "styles/HomePage.module.css";
 
 import Title from "components/atoms/Title";
+import Footer from "components/organism/Footer";
 import ProductList from "components/templates/ProductList";
 import SliderImages from "components/organism/SliderImages";
-import Footer from "components/organism/Footer";
+import NavigationBar from "components/organism/NavigationBar";
+
+import { ProductCardType } from "types/ProductCardType";
+import { PageInformation } from "types/PageInformation";
 
 import GetProductList from "core/GetProductList";
 import GetPageInformation from "core/GetPageInformation";
-import NavigationBar from "components/organism/NavigationBar";
 
-export default function Home({ list, page_info }) {
+type HomeProps = {
+  list: ProductCardType[];
+  page_info: PageInformation;
+};
+
+const Home: NextPage<HomeProps> = ({ list, page_info }) => {
   return (
     <main>
       <Head>
@@ -34,9 +42,9 @@ export default function Home({ list, page_info }) {
       </div>
     </main>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const products = new GetProductList();
   const home_data = new GetPageInformation();
 
@@ -50,3 +58,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+export default Home;

@@ -1,0 +1,17 @@
+.nav_option {
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(66, 66, 73);
+}
+
+.nav_option:hover {
+  color: #fff;
+}
+
+.nav_option__icon {
+  line-height: 0;
+}

@@ -1,0 +1,8 @@
+.navigation_bar__list {
+  display: flex;
+  list-style: none;
+}
+
+.navigation_bar__list > * {
+  margin-right: 2em;
+}

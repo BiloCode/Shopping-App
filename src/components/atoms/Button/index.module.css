@@ -13,3 +13,12 @@
 .button:hover {
   background-color: var(--color-green-c);
 }
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button__small {
+  font-size: 14px;
+  padding: 4px 0;
+}

@@ -1,0 +1,13 @@
+.slider {
+  width: 100%;
+  height: 70vh;
+}
+
+.container {
+  width: 80%;
+  margin: 4em auto;
+}
+
+.product_title_container {
+  padding-bottom: 2em;
+}

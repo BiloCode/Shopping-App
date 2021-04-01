@@ -1,0 +1,17 @@
+.date_text {
+  width: max-content;
+  color: rgb(114, 114, 145);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 5px;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.date_text__icon {
+  line-height: 0;
+}
+
+.date_text__value {
+  font-weight: 300;
+}

@@ -1,0 +1,5 @@
+.navigation_bar {
+  width: 100%;
+  height: var(--nav-height);
+  background-color: #000;
+}

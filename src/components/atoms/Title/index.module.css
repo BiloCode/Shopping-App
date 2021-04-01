@@ -1,0 +1,20 @@
+.title {
+  width: max-content;
+  font-weight: bold;
+}
+
+.title__small {
+  font-size: 15px;
+}
+
+.title__normal {
+  font-size: 18px;
+}
+
+.title__big {
+  font-size: 22px;
+}
+
+.title__extra_big {
+  font-size: 25px;
+}

@@ -1,0 +1,27 @@
+.social_button {
+  width: 100%;
+  height: 48px;
+  border: none;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  align-items: center;
+  background-color: rgb(240, 240, 240);
+}
+
+.social_button .icon,
+.social_button .text {
+  color: #fff;
+}
+
+.social_button .icon {
+  width: 64px;
+  line-height: 0;
+  font-size: 2em;
+}
+
+.social_button .text {
+  font-size: 15px;
+  flex-shrink: 1;
+  font-weight: bold;
+}

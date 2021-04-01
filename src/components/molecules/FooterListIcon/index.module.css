@@ -1,0 +1,8 @@
+.footer_list_icon {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer_list_icon > * {
+  margin-left: 3px;
+}

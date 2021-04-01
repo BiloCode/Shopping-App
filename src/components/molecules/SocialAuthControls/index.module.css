@@ -1,0 +1,4 @@
+.social_controls {
+  display: grid;
+  row-gap: 5px;
+}

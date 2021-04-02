@@ -1,11 +1,11 @@
 .nav_option {
   color: #fff;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, max-content);
   column-gap: 5px;
   align-items: center;
   cursor: pointer;
-  color: rgb(66, 66, 73);
+  color: rgb(108, 108, 124);
 }
 
 .nav_option:hover {

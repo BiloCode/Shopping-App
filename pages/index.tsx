@@ -1,6 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
 
-import Head from "next/head";
 import styles from "styles/HomePage.module.css";
 
 import Title from "components/atoms/Title";
@@ -14,6 +13,7 @@ import { PageInformation } from "types/PageInformation";
 
 import GetProductList from "core/GetProductList";
 import GetPageInformation from "core/GetPageInformation";
+import PageConfiguration from "components/templates/PageConfiguration";
 
 type HomeProps = {
   list: ProductCardType[];
@@ -22,25 +22,19 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ list, page_info }) => {
   return (
-    <main>
-      <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div>
-        <NavigationBar />
-        <div className={styles.slider}>
-          <SliderImages images={page_info.banner_images} />
-        </div>
-        <div className={styles.container}>
-          <div className={styles.product_title_container}>
-            <Title type="extra-big">Nuestros Productos</Title>
-          </div>
-          <ProductList products={list} />
-        </div>
-        <Footer />
+    <PageConfiguration title="Inicio">
+      <NavigationBar />
+      <div className={styles.slider}>
+        <SliderImages images={page_info.banner_images} />
       </div>
-    </main>
+      <div className={styles.container}>
+        <div className={styles.product_title_container}>
+          <Title type="extra-big">Nuestros Productos</Title>
+        </div>
+        <ProductList products={list} />
+      </div>
+      <Footer />
+    </PageConfiguration>
   );
 };
 

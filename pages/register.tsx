@@ -1,12 +1,10 @@
-import Head from "next/head";
+import PageConfiguration from "components/templates/PageConfiguration";
+import userLoggedChecking from "hocs/userLoggedChecking";
 
 const Register = () => (
-  <main>
-    <Head>
-      <title>Register</title>
-    </Head>
-    <div></div>
-  </main>
+  <PageConfiguration title="Register">
+    <span>Register</span>
+  </PageConfiguration>
 );
 
-export default Register;
+export default userLoggedChecking(Register);

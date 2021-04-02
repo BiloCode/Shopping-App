@@ -1,8 +1,10 @@
 import { createContext, useContext } from "react";
 
+import { UserSimpleData } from "types/UserDataType";
+
 type AuthType = {
-  user: any;
   isLoading: boolean;
+  user: UserSimpleData;
 };
 
 export const AuthContext = createContext<AuthType>({

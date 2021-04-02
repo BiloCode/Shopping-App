@@ -1,0 +1,33 @@
+.navigation_user_area__button {
+  width: 130px;
+  height: auto;
+}
+
+.navigation_user_area__button_dropdown {
+  border: none;
+  outline: none;
+  background: none;
+  position: relative;
+}
+
+.navigation_user_area__image_container {
+  cursor: pointer;
+}
+
+.navigation_user_area__dropdown {
+  width: 150px;
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 46px;
+  right: 0;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.navigation_user_area__dropdown > * {
+  padding: 1em 1.3em;
+}

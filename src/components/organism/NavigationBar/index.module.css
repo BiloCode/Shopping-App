@@ -1,6 +1,9 @@
 .navigation_bar {
   width: 100%;
   height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: #000;
   display: flex;
   justify-content: space-between;
@@ -13,8 +16,4 @@
   grid-template-columns: repeat(2, auto);
   column-gap: 3em;
   align-items: center;
-}
-
-.navigation_bar__button {
-  width: 130px;
 }

@@ -6,7 +6,7 @@ import { ProductCardType } from "types/ProductCardType";
 import Button from "components/atoms/Button";
 import Title from "components/atoms/Title";
 import DateText from "components/atoms/DateText";
-import SliderImages from "components/organism/SliderImages";
+import SelectableImage from "components/organism/SelectableImage";
 
 const ProductCard: FC<ProductCardType> = ({
   name,
@@ -16,7 +16,7 @@ const ProductCard: FC<ProductCardType> = ({
 }) => (
   <div className={styles.product_card__container}>
     <div className={styles.product_card__image}>
-      <SliderImages images={images} />
+      <SelectableImage images={images} />
     </div>
     <div className={styles.product_card__information}>
       <Title>{name}</Title>

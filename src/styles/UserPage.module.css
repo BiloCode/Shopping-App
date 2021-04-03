@@ -1,4 +1,6 @@
 .container_limit {
   width: 80%;
   margin: 2em auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
 }

@@ -14,7 +14,7 @@ const Login = () => {
       <NavigationBar />
       <div className={styles.container}>
         <div className={styles.title_container}>
-          <Title type="extra-big">¡Bienvenido a nuestra Tienda!</Title>
+          <Title type="extra-big">¡Bienvenido a nuestro espacio privado!</Title>
         </div>
         <div className={styles.controls_container}>
           <SocialAuthControls />

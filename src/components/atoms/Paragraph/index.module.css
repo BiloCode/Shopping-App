@@ -1,0 +1,10 @@
+.paragraph {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 300;
+  color: var(--color-primary);
+}
+
+.paragraph__big {
+  font-size: 1.25em;
+}

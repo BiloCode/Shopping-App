@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
-import { AiOutlineHome } from "react-icons/ai";
 import styles from "./index.module.css";
+
+import { AiOutlineHome, AiOutlineUser, AiOutlineTag } from "react-icons/ai";
 
 import NavOption from "components/atoms/NavOption";
 
@@ -15,12 +16,12 @@ const NavigationListOption = () => {
       <NavOption text="Inicio" Icon={AiOutlineHome} onClick={NavigateToHome} />
       <NavOption
         text="Nosotros"
-        Icon={AiOutlineHome}
+        Icon={AiOutlineUser}
         onClick={NavigateToAboutUs}
       />
       <NavOption
-        text="Productos"
-        Icon={AiOutlineHome}
+        text="Nuestros Productos"
+        Icon={AiOutlineTag}
         onClick={NavigateToProducts}
       />
     </ul>

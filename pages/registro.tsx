@@ -1,9 +1,11 @@
+import NavigationBar from "components/organism/NavigationBar";
 import PageConfiguration from "components/templates/PageConfiguration";
+
 import userLoggedChecking from "hocs/userLoggedChecking";
 
 const Register = () => (
-  <PageConfiguration title="Register">
-    <span>Register</span>
+  <PageConfiguration title="Registro">
+    <NavigationBar />
   </PageConfiguration>
 );
 

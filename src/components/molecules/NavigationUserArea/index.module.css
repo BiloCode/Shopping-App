@@ -1,6 +1,7 @@
 .navigation_user_area__button {
-  width: 130px;
-  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 5px;
 }
 
 .navigation_user_area__button_dropdown {
@@ -21,9 +22,9 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 46px;
+  top: 53px;
   right: 0;
-  background-color: #000;
+  background-color: var(--color-primary);
   border-radius: 8px;
   overflow: hidden;
 }

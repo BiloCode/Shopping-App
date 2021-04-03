@@ -6,8 +6,9 @@
   --color-green-c: #32f5a7;
   --color-fucsia: #a8250b;
   --color-fucsia-b: #f52800;
+  --color-primary: rgb(22, 26, 43);
 
-  --nav-height: 56px;
+  --nav-height: 64px;
   --footer-height: 80px;
 }
 

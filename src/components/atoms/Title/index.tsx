@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./index.module.css";
 import classnames from "classnames";
 
-type TitleSize = "normal" | "big" | "small" | "extra-big";
+type TitleSize = "normal" | "big" | "small" | "extra-big" | "ultra-big";
 
 type TitleProps = {
   color?: string;
@@ -17,6 +17,7 @@ const Title: FC<TitleProps> = ({ children, color, type }) => (
       [styles.title__normal]: type === "normal",
       [styles.title__big]: type === "big",
       [styles.title__extra_big]: type === "extra-big",
+      [styles.title__ultra_big]: type === "ultra-big",
     })}
   >
     {children}

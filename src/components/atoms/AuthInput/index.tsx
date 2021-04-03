@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./index.module.css";
 
 export type AuthInputProps = {
-  type?: "text" | "password" | "number";
+  type?: "text" | "password" | "number" | "email";
 };
 
 const AuthInput: FC<AuthInputProps> = ({ type }) => (

@@ -1,29 +1,32 @@
 import { FC, useState } from "react";
 import styles from "./index.module.css";
 
-import ImageContentHidden from "components/molecules/ImageContentHidden";
-import ImageIndicatorList from "components/molecules/ImageIndicatorsList";
+import useImageSelect from "hooks/useImageSelect";
 
-type SliderImagesProps = {
+import ImageContentHidden from "components/molecules/ImageContentHidden";
+import SliderText from "components/molecules/SliderText";
+
+type SliderImageProps = {
   images: string[];
 };
 
-const SliderImages: FC<SliderImagesProps> = ({ images }) => {
-  const [imageSelect, setImageSelect] = useState<number>(0);
-
-  const changeImageIndex = (id: number) => () => setImageSelect(() => id);
+const SliderImage: FC<SliderImageProps> = ({ images }) => {
+  const { changeImageSelect, imageSelect } = useImageSelect();
 
   return (
-    <div className={styles.slider_content}>
-      <ImageContentHidden images={images} imageActive={imageSelect} />
-      {images.length > 1 && (
-        <ImageIndicatorList
-          iconsNumber={images.length}
-          onClickIndicator={changeImageIndex}
-        />
-      )}
+    <div className={styles.slider_image}>
+      <div className={styles.slider_image__slider}>
+        <ImageContentHidden images={images} imageActive={imageSelect} />
+        <div className={styles.slider_image__text}>
+          <SliderText
+            title="Anime para todos"
+            description="Bienvenido a esta pagina web donde podras realizar recomendaciones de anime o diversos temas."
+          />
+        </div>
+      </div>
+      <div></div>
     </div>
   );
 };
 
-export default SliderImages;
+export default SliderImage;

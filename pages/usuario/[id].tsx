@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "styles/UserPage.module.css";
 
-import UserAvatar from "components/atoms/UserAvatar";
 import NavigationBar from "components/organism/NavigationBar";
 import PageConfiguration from "components/templates/PageConfiguration";
+import UserProfileLeftContent from "components/organism/UserProfileLeftContent";
 
 import GetUserById from "core/GetUserById";
 
 import { useUserProfileContext } from "context/UserProfileContext/context";
 
 const Profile = () => {
-  const { query } = useRouter();
+  const { query, replace } = useRouter();
   const {
     isLoading,
     userNowData,
@@ -23,7 +23,10 @@ const Profile = () => {
 
   useEffect(() => {
     const getUserProfile = async () => {
-      if (!query.id) return;
+      if (!query.id) {
+        replace("/");
+        return;
+      }
 
       const _id = String(query.id);
       const userStored = userExists(_id);
@@ -45,15 +48,20 @@ const Profile = () => {
     getUserProfile();
   }, []);
 
-  if (isLoading) return null;
-
   return (
     <PageConfiguration title="Perfil">
       <NavigationBar />
-      <div className={styles.container_limit}>
-        <UserAvatar type="extra-big" image={userNowData.profileImage} />
-        <span>{userNowData.fullName}</span>
-      </div>
+      {isLoading ? (
+        <div></div>
+      ) : (
+        <div className={styles.container_limit}>
+          <UserProfileLeftContent
+            profileImage={userNowData.profileImage}
+            fullName={userNowData.fullName}
+          />
+          <div></div>
+        </div>
+      )}
     </PageConfiguration>
   );
 };

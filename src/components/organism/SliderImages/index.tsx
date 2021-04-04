@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import styles from "./index.module.css";
 
-import useImageSelect from "hooks/useImageSelect";
+import useNumberSelect from "hooks/useNumberSelect";
 
 import ImageContentHidden from "components/molecules/ImageContentHidden";
 import SliderText from "components/molecules/SliderText";
@@ -11,12 +11,12 @@ type SliderImageProps = {
 };
 
 const SliderImage: FC<SliderImageProps> = ({ images }) => {
-  const { changeImageSelect, imageSelect } = useImageSelect();
+  const { changeNumberSelect, numberSelect } = useNumberSelect();
 
   return (
     <div className={styles.slider_image}>
       <div className={styles.slider_image__slider}>
-        <ImageContentHidden images={images} imageActive={imageSelect} />
+        <ImageContentHidden images={images} imageActive={numberSelect} />
         <div className={styles.slider_image__text}>
           <SliderText
             title="Anime para todos"

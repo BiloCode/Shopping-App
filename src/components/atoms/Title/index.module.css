@@ -1,6 +1,7 @@
 .title {
   width: max-content;
   font-weight: bold;
+  color: var(--color-primary);
 }
 
 .title__small {

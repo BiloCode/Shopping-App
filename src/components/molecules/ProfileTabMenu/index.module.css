@@ -1,0 +1,11 @@
+.profile_tab_menu {
+  width: 100%;
+}
+
+.profile_tab_menu__tabs_header {
+  display: flex;
+}
+
+.profile_tab_menu__tabs_body {
+  width: 100%;
+}

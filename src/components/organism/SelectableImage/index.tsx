@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./index.module.css";
 
-import useImageSelect from "hooks/useImageSelect";
+import useNumberSelect from "hooks/useNumberSelect";
 
 import ImageContentHidden from "components/molecules/ImageContentHidden";
 import ImageIndicatorList from "components/molecules/ImageIndicatorsList";
@@ -11,15 +11,15 @@ type SelectableImageProps = {
 };
 
 const SelectableImage: FC<SelectableImageProps> = ({ images }) => {
-  const { imageSelect, changeImageSelect } = useImageSelect();
+  const { numberSelect, changeNumberSelect } = useNumberSelect();
 
   return (
     <div className={styles.slider_content}>
-      <ImageContentHidden images={images} imageActive={imageSelect} />
+      <ImageContentHidden images={images} imageActive={numberSelect} />
       {images.length > 1 && (
         <ImageIndicatorList
           iconsNumber={images.length}
-          onClickIndicator={changeImageSelect}
+          onClickIndicator={changeNumberSelect}
         />
       )}
     </div>

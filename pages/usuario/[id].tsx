@@ -1,69 +1,47 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { NextPage } from "next";
 import styles from "styles/UserPage.module.css";
 
+import Spinner from "components/atoms/Spinner";
 import NavigationBar from "components/organism/NavigationBar";
 import PageConfiguration from "components/templates/PageConfiguration";
 import UserProfileLeftContent from "components/organism/UserProfileLeftContent";
+import UserProfileRightContent from "components/organism/UserProfileRightContent";
 
-import GetUserById from "core/GetUserById";
+import useGetProfile from "hooks/useGetProfile";
 
-import { useUserProfileContext } from "context/UserProfileContext/context";
+type ProfileProps = {
+  userId?: string;
+};
 
-const Profile = () => {
-  const { query, replace } = useRouter();
-  const {
-    isLoading,
-    userNowData,
-    setLoading,
-    setUserSearched,
-    userExists,
-    setUserToStore,
-  } = useUserProfileContext();
-
-  useEffect(() => {
-    const getUserProfile = async () => {
-      if (!query.id) {
-        replace("/");
-        return;
-      }
-
-      const _id = String(query.id);
-      const userStored = userExists(_id);
-
-      if (!userStored) {
-        const getUser = new GetUserById();
-        const user = await getUser.__invoke(_id);
-
-        setUserToStore(user);
-        setUserSearched(user);
-        setLoading(false);
-        return;
-      }
-
-      setUserSearched(userStored);
-      setLoading(false);
-    };
-
-    getUserProfile();
-  }, []);
+const Profile: NextPage<ProfileProps> = ({ userId }) => {
+  const { isLoading, userNowData } = useGetProfile(userId);
 
   return (
     <PageConfiguration title="Perfil">
       <NavigationBar />
       {isLoading ? (
-        <div></div>
+        <div className={styles.container_spinner}>
+          <Spinner />
+        </div>
       ) : (
         <div className={styles.container_limit}>
           <UserProfileLeftContent
             profileImage={userNowData.profileImage}
             fullName={userNowData.fullName}
           />
-          <div></div>
+          <UserProfileRightContent />
         </div>
       )}
     </PageConfiguration>
   );
+};
+
+Profile.getInitialProps = ({ query }) => {
+  const userId = String(query.id);
+
+  return {
+    userId,
+  };
 };
 
 export default Profile;

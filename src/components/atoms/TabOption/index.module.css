@@ -1,0 +1,26 @@
+.tab_option {
+  width: 180px;
+  height: 48px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid transparent;
+}
+
+.tab_option__text {
+  color: var(--color-primary);
+  font-size: 1.1em;
+}
+
+.tab_option:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.tab_option--select {
+  font-weight: bold;
+  border-bottom-color: var(--color-primary);
+}

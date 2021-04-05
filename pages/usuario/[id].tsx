@@ -8,6 +8,7 @@ import UserProfileLeftContent from "components/organism/UserProfileLeftContent";
 import UserProfileRightContent from "components/organism/UserProfileRightContent";
 
 import useGetProfile from "hooks/useGetProfile";
+import UserProfileProvider from "context/UserProfileContext/provider";
 
 type ProfileProps = {
   userId?: string;
@@ -25,11 +26,13 @@ const Profile: NextPage<ProfileProps> = ({ userId }) => {
         </div>
       ) : (
         <div className={styles.container_limit}>
-          <UserProfileLeftContent
-            profileImage={userNowData.profileImage}
-            fullName={userNowData.fullName}
-          />
-          <UserProfileRightContent />
+          <UserProfileProvider _id={userId}>
+            <UserProfileLeftContent
+              profileImage={userNowData.profileImage}
+              fullName={userNowData.fullName}
+            />
+            <UserProfileRightContent />
+          </UserProfileProvider>
         </div>
       )}
     </PageConfiguration>

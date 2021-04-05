@@ -1,23 +1,11 @@
 import { createContext, useContext } from "react";
 
-import { UserDataType } from "types/UserDataType";
-
-type UserProfileContextType = {
-  isLoading: boolean;
-  userNowData: UserDataType;
-  setLoading(state: boolean);
-  setUserSearched(user: UserDataType);
-  setUserToStore(user: UserDataType);
-  userExists(_id: string);
+type UserProfileProps = {
+  userPageId: string;
 };
 
-export const UserProfileContext = createContext<UserProfileContextType>({
-  isLoading: true,
-  userNowData: null,
-  setLoading() {},
-  userExists() {},
-  setUserSearched() {},
-  setUserToStore() {},
+export const UserProfileContext = createContext<UserProfileProps>({
+  userPageId: null,
 });
 
 export const useUserProfileContext = () => useContext(UserProfileContext);

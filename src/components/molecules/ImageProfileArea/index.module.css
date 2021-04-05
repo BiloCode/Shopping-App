@@ -1,0 +1,26 @@
+.image_profile {
+  position: relative;
+}
+
+.image_profile__image {
+  position: relative;
+}
+
+.image_profile__upload_icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.image_profile__spinner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}

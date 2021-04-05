@@ -1,6 +1,8 @@
-import Title from "components/atoms/Title";
-import UserAvatar from "components/atoms/UserAvatar";
 import { FC } from "react";
+import styles from "./index.module.css";
+
+import Title from "components/atoms/Title";
+import ImageProfileArea from "components/molecules/ImageProfileArea";
 
 type UserProfileLeftContentProps = {
   fullName: string;
@@ -11,10 +13,8 @@ const UserProfileLeftContent: FC<UserProfileLeftContentProps> = ({
   fullName,
   profileImage,
 }) => (
-  <div>
-    <div>
-      <UserAvatar image={profileImage} type="extra-big" />
-    </div>
+  <div className={styles.user_profile}>
+    <ImageProfileArea image={profileImage} />
     <Title>{fullName}</Title>
   </div>
 );

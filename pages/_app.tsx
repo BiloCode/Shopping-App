@@ -3,14 +3,14 @@ import "database";
 
 import { AppProps } from "next/app";
 import { AuthProvider } from "context/AuthContext/provider";
-import { UserProfileProvider } from "context/UserProfileContext/provider";
+import { ProfileProvider } from "context/ProfileContext/provider";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <UserProfileProvider>
+      <ProfileProvider>
         <Component {...pageProps} />
-      </UserProfileProvider>
+      </ProfileProvider>
     </AuthProvider>
   );
 }

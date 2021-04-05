@@ -1,0 +1,22 @@
+.icon_in_circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  outline: none;
+}
+
+.icon_in_circle__icon {
+  color: #fff;
+  line-height: 0;
+  font-size: 1.3em;
+}
+
+.icon_in_circle__input {
+  display: none;
+}

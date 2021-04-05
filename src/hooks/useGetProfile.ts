@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import GetUserById from "core/GetUserById";
 
-import { useUserProfileContext } from "context/UserProfileContext/context";
+import { useProfileContext } from "context/ProfileContext/context";
 
 const useGetProfile = (userId?: string) => {
   const { replace } = useRouter();
@@ -14,7 +14,7 @@ const useGetProfile = (userId?: string) => {
     setUserSearched,
     userExists,
     setUserToStore,
-  } = useUserProfileContext();
+  } = useProfileContext();
 
   useEffect(() => {
     const getUserProfile = async () => {

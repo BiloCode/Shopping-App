@@ -29,8 +29,12 @@ export const AuthProvider: FC = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  const updateProfileImage = (imageURL: string) => {
+    setUser((user) => ({ ...user, profileImage: imageURL }));
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isLoading }}>
+    <AuthContext.Provider value={{ user, isLoading, updateProfileImage }}>
       {children}
     </AuthContext.Provider>
   );

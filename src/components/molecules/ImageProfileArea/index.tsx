@@ -1,13 +1,13 @@
-import { ChangeEvent, FC, useState } from "react";
+import { FC } from "react";
 import styles from "./index.module.css";
 
 import { GoCloudUpload } from "react-icons/go";
 
+import useUploadProfileImage from "hooks/useUploadProfileImage";
+
 import UploadIcon from "components/atoms/UploadIcon";
 import UserAvatar from "components/atoms/UserAvatar";
 import Spinner from "components/atoms/Spinner";
-import UploadProfileImage from "core/UploadProfileImage";
-import UpdateUserProfileImage from "core/UpdateUserProfileImage";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useUserProfileContext } from "context/UserProfileContext/context";
@@ -17,43 +17,11 @@ type ImageProfileAreaProps = {
 };
 
 const ImageProfileArea: FC<ImageProfileAreaProps> = ({ image }) => {
+  const { user } = useAuthContext();
   const { userPageId } = useUserProfileContext();
-  const { user, updateProfileImage } = useAuthContext();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [profileImageLocal, setProfileImageLocal] = useState<string>(image);
-
-  const onSubmitFile = async (ev: ChangeEvent<HTMLInputElement>) => {
-    const files = ev.currentTarget.files;
-    if (files.length !== 1) return;
-
-    const image = files[0];
-    const imageType = image.type.split("/");
-
-    if (imageType[0] !== "image") return;
-
-    setIsLoading(() => true);
-
-    const uploadProfileImage = new UploadProfileImage();
-    const imageURL = await uploadProfileImage.__invoke(image);
-
-    if (!imageURL) {
-      setIsLoading(() => false);
-      return;
-    }
-
-    const updateUserImageProfile = new UpdateUserProfileImage();
-    const isUpdated = await updateUserImageProfile.__invoke(user._id, imageURL);
-
-    if (!isUpdated) {
-      setIsLoading(() => false);
-      return;
-    }
-
-    updateProfileImage(imageURL);
-    setProfileImageLocal(() => imageURL);
-    setIsLoading(() => false);
-  };
+  const { profileImageLocal, isLoading, onSubmitFile } = useUploadProfileImage(
+    image
+  );
 
   const isMyProfile = user?._id === userPageId;
 

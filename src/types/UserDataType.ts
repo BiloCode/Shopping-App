@@ -1,8 +1,13 @@
 import firebase from "firebase";
 
+export type UserImageProfileData = {
+  url: string;
+  name: string;
+};
+
 export type UserSimpleData = {
   _id: string;
-  profileImage: string;
+  profileImage: UserImageProfileData;
 };
 
 export type UserDataType = UserSimpleData & {

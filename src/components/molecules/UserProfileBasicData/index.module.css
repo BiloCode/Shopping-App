@@ -1,0 +1,6 @@
+.user_profile_basic_data {
+  width: 100%;
+  margin: 1.5em 0 1em 0;
+  display: grid;
+  row-gap: 5px;
+}

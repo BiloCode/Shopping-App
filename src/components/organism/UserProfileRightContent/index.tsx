@@ -1,14 +1,14 @@
 import styles from "./index.module.css";
 
-import Title from "components/atoms/Title";
 import ProfileProduct from "components/molecules/ProfileProduct";
 import ProfileTabMenu from "components/molecules/ProfileTabMenu";
+import ProfileTitleRightContent from "components/molecules/ProfileTitleRightContent";
 
-const tabs = ["Todos", "Sin Confirmacion", "Confirmados"];
+const tabs = ["Todos", "Sin Confirmacion", "Publicados"];
 
 const UserProfileRightContent = () => (
   <div>
-    <Title type="big">Mis Productos</Title>
+    <ProfileTitleRightContent />
     <ProfileTabMenu
       tabsMenu={tabs}
       renderTab={(tabActive) => {

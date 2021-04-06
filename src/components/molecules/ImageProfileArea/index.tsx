@@ -28,7 +28,9 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({ image }) => {
   return (
     <div className={styles.image_profile}>
       <div className={styles.image_profile__image}>
-        <CircularImage image={profileImageLocal} type="extra-big" />
+        <div className={styles.image_profile__image_border}>
+          <CircularImage image={profileImageLocal} type="extra-big" />
+        </div>
         {isLoading && (
           <div className={styles.image_profile__spinner}>
             <Spinner white />

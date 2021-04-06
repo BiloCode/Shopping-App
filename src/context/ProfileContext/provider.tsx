@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 
 import { ProfileContext } from "./context";
-import { UserDataType } from "types/UserDataType";
+import { UserDataType, UserImageProfileData } from "types/UserDataType";
 
 export const ProfileProvider: FC = ({ children }) => {
   const [userNowData, setUser] = useState<UserDataType>(null);
@@ -23,15 +23,38 @@ export const ProfileProvider: FC = ({ children }) => {
     }
   };
 
+  const updateUserImageStore = (
+    userId: string,
+    profileImage: UserImageProfileData
+  ) => {
+    const oldCache = [...userCacheStore];
+    const newCache: UserDataType[] = [];
+
+    for (let userStored of oldCache) {
+      if (userStored._id === userId) {
+        newCache.push({
+          ...userStored,
+          profileImage,
+        });
+        continue;
+      }
+
+      newCache.push(userStored);
+    }
+
+    setUserCacheStore(() => newCache);
+  };
+
   return (
     <ProfileContext.Provider
       value={{
         isLoading,
-        userNowData,
         setLoading,
-        setUserSearched,
-        setUserToStore,
         userExists,
+        userNowData,
+        setUserToStore,
+        setUserSearched,
+        updateUserImageStore,
       }}
     >
       {children}

@@ -32,7 +32,10 @@ class GoogleAuthentication {
         {
           email: user.email,
           fullName: user.displayName,
-          profileImage: user.photoURL,
+          profileImage: {
+            name: "",
+            url: user.photoURL,
+          },
         },
         "google"
       );

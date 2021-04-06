@@ -23,4 +23,5 @@
 .user_avatar__image {
   width: inherit;
   height: inherit;
+  object-fit: cover;
 }

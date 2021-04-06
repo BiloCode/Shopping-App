@@ -30,7 +30,7 @@ const Profile: NextPage<ProfileProps> = ({ userId }) => {
             <UserProfileLeftContent
               fullName={userNowData.fullName}
               createdAt={userNowData.createdAt}
-              profileImage={userNowData.profileImage}
+              image={userNowData.profileImage.url}
             />
             <UserProfileRightContent />
           </UserProfileProvider>

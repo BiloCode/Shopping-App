@@ -5,25 +5,12 @@
   align-items: center;
 }
 
-.user_profile__main_information {
-  width: 100%;
-  margin: 1.5em 0 1em 0;
-  display: grid;
-  row-gap: 5px;
-}
-
 .user_profile__data_list {
   width: 100%;
   padding: 0;
   list-style: none;
   display: grid;
   row-gap: 3px;
-}
-
-.user_profile__data_list__element {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9em;
 }
 
 .user_profile__button {

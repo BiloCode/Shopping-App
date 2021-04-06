@@ -1,11 +1,11 @@
 import { createContext, useContext } from "react";
 
-import { UserSimpleData } from "types/UserDataType";
+import { UserImageProfileData, UserSimpleData } from "types/UserDataType";
 
 type AuthType = {
   isLoading: boolean;
   user: UserSimpleData;
-  updateProfileImage(imageURL: string);
+  updateProfileImage(profileImage: UserImageProfileData);
 };
 
 export const AuthContext = createContext<AuthType>({

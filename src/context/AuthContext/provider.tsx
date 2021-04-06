@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import firebase from "firebase";
 
 import { AuthContext } from "./context";
-import { UserSimpleData } from "types/UserDataType";
+import { UserSimpleData, UserImageProfileData } from "types/UserDataType";
 
 import GetUserByEmail from "core/GetUserByEmail";
 
@@ -29,8 +29,8 @@ export const AuthProvider: FC = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const updateProfileImage = (imageURL: string) => {
-    setUser((user) => ({ ...user, profileImage: imageURL }));
+  const updateProfileImage = (profileImage: UserImageProfileData) => {
+    setUser((user) => ({ ...user, profileImage }));
   };
 
   return (

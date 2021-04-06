@@ -50,7 +50,7 @@ const NavigationUserArea = () => {
         onClick={ToggleDropdown}
         className={styles.navigation_user_area__image_container}
       >
-        <CircularImage image={user.profileImage} />
+        <CircularImage image={user.profileImage.url} />
       </div>
       {isDropdownActive && (
         <ul className={styles.navigation_user_area__dropdown}>

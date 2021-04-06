@@ -1,5 +1,7 @@
 import firebase from "firebase";
 
+import { AuthenticationType } from "types/AuthenticationType";
+
 type UserData = {
   email: string;
   profileImage: string;
@@ -7,12 +9,13 @@ type UserData = {
 };
 
 class CreateNewUser {
-  public async __invoke(user: UserData) {
+  public async __invoke(user: UserData, authType: AuthenticationType) {
     const firestore = firebase.firestore();
 
     try {
       await firestore.collection("users").add({
         ...user,
+        authenticationType: authType,
         createdAt: firebase.firestore.Timestamp.now(),
       });
 

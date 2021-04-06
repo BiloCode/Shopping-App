@@ -1,0 +1,27 @@
+.profile_product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: rgb(245, 245, 245);
+  user-select: none;
+}
+
+.profile_product:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+.profile_product__information {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  column-gap: 1em;
+  align-items: center;
+}
+
+.profile_product__text {
+  display: grid;
+  row-gap: 2px;
+}
+
+.profile_product__options {
+}

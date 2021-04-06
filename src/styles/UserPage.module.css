@@ -2,13 +2,13 @@
   width: 80%;
   margin: 2em auto;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 240px 1fr;
   column-gap: 5em;
 }
 
 .container_spinner {
+  height: calc(100vh - var(--nav-height));
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2em 0;
 }

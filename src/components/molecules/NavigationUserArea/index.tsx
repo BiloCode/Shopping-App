@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 import Button from "components/atoms/Button";
 import NavOption from "components/atoms/NavOption";
-import UserAvatar from "components/atoms/UserAvatar";
+import CircularImage from "components/atoms/CircularImage";
 
 import { useAuthContext } from "context/AuthContext/context";
 
@@ -17,11 +17,11 @@ const NavigationUserArea = () => {
   const [isDropdownActive, setIsDropdownActive] = useState(false);
 
   const NavigateToLogin = () => router.push("/login");
-  const NavigateToRegister = () => router.push("/registro");
+  const NavigateToRegister = () => router.push("/register");
   const ToggleDropdown = () => setIsDropdownActive((active) => !active);
 
   const NavigateToProfile = (_id: string) => () => {
-    router.push(`/usuario/${_id}`);
+    router.push(`/user/${_id}`);
   };
 
   const LogoutAccount = async () => {
@@ -50,7 +50,7 @@ const NavigationUserArea = () => {
         onClick={ToggleDropdown}
         className={styles.navigation_user_area__image_container}
       >
-        <UserAvatar image={user.profileImage} />
+        <CircularImage image={user.profileImage} />
       </div>
       {isDropdownActive && (
         <ul className={styles.navigation_user_area__dropdown}>

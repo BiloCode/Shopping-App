@@ -1,19 +1,23 @@
 .user_avatar {
-  width: 32px;
-  height: 32px;
+  --size: 32px;
+
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   overflow: hidden;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(235, 235, 235);
+}
+
+.user_avatar--big {
+  --size: 48px;
 }
 
 .user_avatar--small {
-  width: 16px;
-  height: 16px;
+  --size: 16px;
 }
 
 .user_avatar--extra_big {
-  width: 200px;
-  height: 200px;
+  --size: 200px;
 }
 
 .user_avatar__image {

@@ -6,7 +6,7 @@ import { GoCloudUpload } from "react-icons/go";
 import useUploadProfileImage from "hooks/useUploadProfileImage";
 
 import UploadIcon from "components/atoms/UploadIcon";
-import UserAvatar from "components/atoms/UserAvatar";
+import CircularImage from "components/atoms/CircularImage";
 import Spinner from "components/atoms/Spinner";
 
 import { useAuthContext } from "context/AuthContext/context";
@@ -28,7 +28,7 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({ image }) => {
   return (
     <div className={styles.image_profile}>
       <div className={styles.image_profile__image}>
-        <UserAvatar image={profileImageLocal} type="extra-big" />
+        <CircularImage image={profileImageLocal} type="extra-big" />
         {isLoading && (
           <div className={styles.image_profile__spinner}>
             <Spinner white />

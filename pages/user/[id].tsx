@@ -28,8 +28,9 @@ const Profile: NextPage<ProfileProps> = ({ userId }) => {
         <div className={styles.container_limit}>
           <UserProfileProvider _id={userId}>
             <UserProfileLeftContent
-              profileImage={userNowData.profileImage}
               fullName={userNowData.fullName}
+              createdAt={userNowData.createdAt}
+              profileImage={userNowData.profileImage}
             />
             <UserProfileRightContent />
           </UserProfileProvider>

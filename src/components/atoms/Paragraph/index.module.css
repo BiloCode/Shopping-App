@@ -8,3 +8,7 @@
 .paragraph__big {
   font-size: 1.25em;
 }
+
+.paragraph__small {
+  font-size: 0.8em;
+}

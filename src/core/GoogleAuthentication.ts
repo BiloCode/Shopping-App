@@ -4,8 +4,8 @@ import CreateNewUser from "./CreateNewUser";
 import ExistsUser from "./ExistsUser";
 
 class GoogleAuthentication {
-  private createNewUser: CreateNewUser;
   private existsUser: ExistsUser;
+  private createNewUser: CreateNewUser;
 
   constructor(createNewUser: CreateNewUser, existsUser: ExistsUser) {
     this.createNewUser = createNewUser;
@@ -28,11 +28,14 @@ class GoogleAuthentication {
         return;
       }
 
-      this.createNewUser.__invoke({
-        fullName: user.displayName,
-        email: user.email,
-        profileImage: user.photoURL,
-      });
+      this.createNewUser.__invoke(
+        {
+          email: user.email,
+          fullName: user.displayName,
+          profileImage: user.photoURL,
+        },
+        "google"
+      );
     } catch (error) {
       console.log(error);
     }

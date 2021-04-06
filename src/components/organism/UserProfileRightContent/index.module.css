@@ -1,0 +1,5 @@
+.profile_product_list_all {
+  display: grid;
+  margin: 1em 0;
+  row-gap: 5px;
+}

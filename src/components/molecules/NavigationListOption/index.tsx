@@ -8,8 +8,8 @@ import NavOption from "components/atoms/NavOption";
 const NavigationListOption = () => {
   const router = useRouter();
   const NavigateToHome = () => router.push("/");
-  const NavigateToAboutUs = () => router.push("/nosotros");
-  const NavigateToProducts = () => router.push("/productos");
+  const NavigateToAboutUs = () => router.push("/about-us");
+  const NavigateToProducts = () => router.push("/product");
 
   return (
     <ul className={styles.navigation_bar__list}>

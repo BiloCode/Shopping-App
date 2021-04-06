@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 
 type ParagraphProps = {
   color?: string;
-  type?: "normal" | "big";
+  type?: "small" | "normal" | "big";
 };
 
 const Paragraph: FC<ParagraphProps> = ({ children, type, color }) => (
@@ -12,6 +12,7 @@ const Paragraph: FC<ParagraphProps> = ({ children, type, color }) => (
     style={{ color }}
     className={classnames(styles.paragraph, {
       [styles.paragraph__big]: type === "big",
+      [styles.paragraph__small]: type === "small",
     })}
   >
     {children}

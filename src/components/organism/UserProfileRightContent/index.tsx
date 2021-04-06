@@ -1,4 +1,7 @@
+import styles from "./index.module.css";
+
 import Title from "components/atoms/Title";
+import ProfileProduct from "components/molecules/ProfileProduct";
 import ProfileTabMenu from "components/molecules/ProfileTabMenu";
 
 const tabs = ["Todos", "Sin Confirmacion", "Confirmados"];
@@ -11,7 +14,14 @@ const UserProfileRightContent = () => (
       renderTab={(tabActive) => {
         switch (tabActive) {
           case 0:
-            return <p>Todos</p>;
+            return (
+              <div className={styles.profile_product_list_all}>
+                <ProfileProduct image="" _id="" name="Polo de suecia" />
+                <ProfileProduct image="" _id="" name="Polo de suecia" />
+                <ProfileProduct image="" _id="" name="Polo de suecia" />
+                <ProfileProduct image="" _id="" name="Polo de suecia" />
+              </div>
+            );
           case 1:
             return <p>Sin confirmar</p>;
           case 2:

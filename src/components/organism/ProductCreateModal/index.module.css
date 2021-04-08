@@ -1,0 +1,23 @@
+.product_create_modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.product_create_modal__container {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+.product_create_modal__form {
+  width: 320px;
+  display: grid;
+  row-gap: 1em;
+}

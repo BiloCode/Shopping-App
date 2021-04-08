@@ -1,0 +1,23 @@
+.form_images_control {
+  display: grid;
+  row-gap: 10px;
+}
+
+.upload_images {
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.upload_images::-webkit-scrollbar {
+  height: 8px;
+}
+
+.upload_images::-webkit-scrollbar-thumb {
+  background-color: rgb(220, 220, 220);
+  border-radius: 3px;
+}
+
+.upload_images__uploaded {
+  display: grid;
+  column-gap: 5px;
+}

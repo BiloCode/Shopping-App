@@ -1,5 +1,5 @@
 import Button from "components/atoms/Button";
-import AuthControl from "components/molecules/AuthControl";
+import FormControl from "components/molecules/FormControl";
 import NavigationBar from "components/organism/NavigationBar";
 import PageConfiguration from "components/templates/PageConfiguration";
 
@@ -9,9 +9,9 @@ const Register = () => (
   <PageConfiguration title="Registro">
     <NavigationBar />
     <div>
-      <AuthControl type="email" labelText="Correo electronico" />
-      <AuthControl type="password" labelText="Contraseña" />
-      <AuthControl type="text" labelText="Nombre Completo" />
+      <FormControl type="email" labelText="Correo electronico" />
+      <FormControl type="password" labelText="Contraseña" />
+      <FormControl type="text" labelText="Nombre Completo" />
       <Button>Registrarse</Button>
     </div>
   </PageConfiguration>

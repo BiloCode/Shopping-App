@@ -19,6 +19,14 @@
   transform: scale(0.95);
 }
 
+.button--red {
+  background-color: var(--color-fucsia-b);
+}
+
+.button--red:hover {
+  background-color: var(--color-fucsia);
+}
+
 .button__small {
   font-size: 14px;
   padding: 4px 0;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./index.module.css";
 
 import Label from "components/atoms/Label";
@@ -15,4 +15,4 @@ const FormControl: FC<FormControlProps> = ({ labelText, type }) => (
   </div>
 );
 
-export default FormControl;
+export default memo(FormControl);

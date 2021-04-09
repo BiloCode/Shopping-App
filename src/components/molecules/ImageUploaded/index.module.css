@@ -3,6 +3,7 @@
   height: 80px;
   position: relative;
   border-radius: 8px;
+  user-select: none;
 }
 
 .image_upload__icon {

@@ -7,7 +7,7 @@ import { useAuthContext } from "context/AuthContext/context";
 
 const ProfileTitleRightContent = () => {
   const { user } = useAuthContext();
-  const { userPageId } = useUserProfileContext();
+  const { userPageId, toggleUserCreateModal } = useUserProfileContext();
 
   const isMyProfile = user?._id === userPageId;
 
@@ -18,7 +18,9 @@ const ProfileTitleRightContent = () => {
       </Title>
       {isMyProfile && (
         <div className={styles.profile_right_content__title_button}>
-          <Button type="small">Publicar Producto</Button>
+          <Button onClick={toggleUserCreateModal} type="small">
+            Publicar Producto
+          </Button>
         </div>
       )}
     </div>

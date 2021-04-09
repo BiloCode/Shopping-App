@@ -21,3 +21,8 @@
   display: grid;
   row-gap: 1em;
 }
+
+.product_create_modal__buttons {
+  display: grid;
+  row-gap: 4px;
+}

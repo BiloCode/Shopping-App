@@ -10,9 +10,18 @@ const UserProfileProvider: FC<UserProfileProviderProps> = ({
   children,
 }) => {
   const [userPageId] = useState<string>(_id);
+  const [userCreateModal, setUserCreateModal] = useState(false);
+
+  const toggleUserCreateModal = () => setUserCreateModal((c) => !c);
 
   return (
-    <UserProfileContext.Provider value={{ userPageId }}>
+    <UserProfileContext.Provider
+      value={{
+        userPageId,
+        userCreateModal,
+        toggleUserCreateModal,
+      }}
+    >
       {children}
     </UserProfileContext.Provider>
   );

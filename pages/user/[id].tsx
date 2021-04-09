@@ -10,6 +10,7 @@ import UserProfileRightContent from "components/organism/UserProfileRightContent
 import useGetProfile from "hooks/useGetProfile";
 import UserProfileProvider from "context/UserProfileContext/provider";
 import ProductCreateModal from "components/organism/ProductCreateModal";
+import { useState } from "react";
 
 type ProfileProps = {
   userId?: string;

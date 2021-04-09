@@ -1,9 +1,9 @@
 import firebase from "firebase";
 
-import { UserImageProfileData } from "types/UserDataType";
+import { FirebaseImage } from "types/FirebaseImage";
 
 class UpdateUserProfileImage {
-  public async __invoke(_id: string, profileImage: UserImageProfileData) {
+  public async __invoke(_id: string, profileImage: FirebaseImage) {
     const firestore = firebase.firestore();
     const users = firestore.collection("users");
 

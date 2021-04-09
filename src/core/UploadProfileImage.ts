@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
+import { FirebaseImage } from "types/FirebaseImage";
 import { UserImageStore } from "config/UserImageStore";
-import { UserImageProfileData } from "types/UserDataType";
 
 type UploadTask = firebase.storage.UploadTask;
 
@@ -17,7 +17,7 @@ class UploadProfileImage {
     });
   }
 
-  public async __invoke(image: File): Promise<UserImageProfileData> {
+  public async __invoke(image: File): Promise<FirebaseImage> {
     const storage = firebase.storage();
     const storeRef = storage.ref(UserImageStore + image.name);
     const upload = storeRef.put(image);

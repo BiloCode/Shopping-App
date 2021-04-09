@@ -1,17 +1,17 @@
 import firebase from "firebase";
 
-import { UserSimpleData } from "types/UserDataType";
+import { IUserAuthContext, IUserModel } from "types/UserModel";
 
 class GetUserByEmail {
-  public async __invoke(email: string): Promise<UserSimpleData> {
+  public async __invoke(email: string): Promise<IUserAuthContext> {
     const firestore = firebase.firestore();
     const users = firestore.collection("users");
     const request = await users.where("email", "==", email).get();
 
     if (request.size == 1) {
-      let userData: UserSimpleData;
+      let userData: IUserAuthContext;
 
-      request.forEach((v) => {
+      request.forEach((v: firebase.firestore.QueryDocumentSnapshot) => {
         const data = v.data();
         userData = {
           _id: v.id,

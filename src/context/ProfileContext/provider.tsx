@@ -1,14 +1,16 @@
 import { FC, useState } from "react";
 
 import { ProfileContext } from "./context";
-import { UserDataType, UserImageProfileData } from "types/UserDataType";
+
+import { IUserModel } from "types/UserModel";
+import { FirebaseImage } from "types/FirebaseImage";
 
 export const ProfileProvider: FC = ({ children }) => {
-  const [userNowData, setUser] = useState<UserDataType>(null);
+  const [userNowData, setUser] = useState<IUserModel>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [userCacheStore, setUserCacheStore] = useState<UserDataType[]>([]);
+  const [userCacheStore, setUserCacheStore] = useState<IUserModel[]>([]);
 
-  const setUserSearched = (user: UserDataType) => setUser(() => user);
+  const setUserSearched = (user: IUserModel) => setUser(() => user);
   const setLoading = (state: boolean) => setIsLoading(() => state);
 
   const userExists = (_id: string) => {
@@ -16,7 +18,7 @@ export const ProfileProvider: FC = ({ children }) => {
     return oldUser;
   };
 
-  const setUserToStore = (user: UserDataType) => {
+  const setUserToStore = (user: IUserModel) => {
     const oldUser = userExists(user._id);
     if (!oldUser) {
       setUserCacheStore((store) => [...store, user]);
@@ -25,10 +27,10 @@ export const ProfileProvider: FC = ({ children }) => {
 
   const updateUserImageStore = (
     userId: string,
-    profileImage: UserImageProfileData
+    profileImage: FirebaseImage
   ) => {
     const oldCache = [...userCacheStore];
-    const newCache: UserDataType[] = [];
+    const newCache: IUserModel[] = [];
 
     for (let userStored of oldCache) {
       if (userStored._id === userId) {

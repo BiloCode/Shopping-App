@@ -2,12 +2,15 @@ import styles from "./index.module.css";
 
 import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
-import { useUserProfileContext } from "context/UserProfileContext/context";
+
 import { useAuthContext } from "context/AuthContext/context";
+import { useUserProfileContext } from "context/UserProfileContext/context";
+import { useProductCreateContext } from "context/ProductCreateContext/context";
 
 const ProfileTitleRightContent = () => {
   const { user } = useAuthContext();
-  const { userPageId, toggleUserCreateModal } = useUserProfileContext();
+  const { userPageId } = useUserProfileContext();
+  const { toggleUserCreateModal } = useProductCreateContext();
 
   const isMyProfile = user?._id === userPageId;
 

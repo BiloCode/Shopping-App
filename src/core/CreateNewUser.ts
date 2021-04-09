@@ -1,12 +1,12 @@
 import firebase from "firebase";
 
+import { FirebaseImage } from "types/FirebaseImage";
 import { AuthenticationType } from "types/AuthenticationType";
-import { UserImageProfileData } from "types/UserDataType";
 
 type UserData = {
   email: string;
   fullName: string;
-  profileImage: UserImageProfileData;
+  profileImage: FirebaseImage;
 };
 
 class CreateNewUser {

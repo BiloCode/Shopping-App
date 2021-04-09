@@ -1,5 +1,4 @@
 import { GetStaticProps, NextPage } from "next";
-
 import styles from "styles/HomePage.module.css";
 
 import Title from "components/atoms/Title";
@@ -8,16 +7,16 @@ import ProductList from "components/templates/ProductList";
 import SliderImages from "components/organism/SliderImages";
 import NavigationBar from "components/organism/NavigationBar";
 
+import { PageModel } from "types/PageModel";
 import { ProductCardType } from "types/ProductCardType";
-import { PageInformation } from "types/PageInformation";
 
 import GetProductList from "core/GetProductList";
 import GetPageInformation from "core/GetPageInformation";
 import PageConfiguration from "components/templates/PageConfiguration";
 
 type HomeProps = {
+  page_info: PageModel;
   list: ProductCardType[];
-  page_info: PageInformation;
 };
 
 const Home: NextPage<HomeProps> = ({ list, page_info }) => {
@@ -25,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ list, page_info }) => {
     <PageConfiguration title="Inicio">
       <NavigationBar />
       <div className={styles.slider}>
-        <SliderImages images={page_info.banner_images} />
+        <SliderImages images={page_info.bannerImages} />
       </div>
       <div className={styles.container}>
         <div className={styles.product_title_container}>

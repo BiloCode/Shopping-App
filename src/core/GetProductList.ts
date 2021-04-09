@@ -1,7 +1,5 @@
 import firebase from "firebase";
 
-import { productConverter } from "database/models/Product";
-
 class GetProductList {
   public async __invoke() {
     let list = [];
@@ -9,15 +7,18 @@ class GetProductList {
     const doc = await firebase
       .firestore()
       .collection("products")
-      .withConverter(productConverter)
       .orderBy("createdAt", "desc")
       .limit(8)
       .get();
 
-    doc.forEach((doc) => {
+    doc.forEach((doc: firebase.firestore.QueryDocumentSnapshot) => {
       const document = doc.data();
+      if (document.state === "waiting") {
+        return;
+      }
+
       list.push({
-        _id: document._id,
+        _id: doc.id,
         name: document.name,
         price: document.price,
         images: document.images,

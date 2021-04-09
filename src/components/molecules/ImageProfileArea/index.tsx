@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./index.module.css";
 
 import { GoCloudUpload } from "react-icons/go";
@@ -46,4 +46,4 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({ image }) => {
   );
 };
 
-export default ImageProfileArea;
+export default memo(ImageProfileArea);

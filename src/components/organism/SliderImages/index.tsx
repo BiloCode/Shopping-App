@@ -1,22 +1,26 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./index.module.css";
+
+import { FirebaseImage } from "types/FirebaseImage";
+
+import SliderText from "components/molecules/SliderText";
+import ImageContentHidden from "components/molecules/ImageContentHidden";
 
 import useNumberSelect from "hooks/useNumberSelect";
 
-import ImageContentHidden from "components/molecules/ImageContentHidden";
-import SliderText from "components/molecules/SliderText";
-
 type SliderImageProps = {
-  images: string[];
+  images: FirebaseImage[];
 };
 
 const SliderImage: FC<SliderImageProps> = ({ images }) => {
   const { changeNumberSelect, numberSelect } = useNumberSelect();
 
+  const filterImages = images.map((v) => v.url);
+
   return (
     <div className={styles.slider_image}>
       <div className={styles.slider_image__slider}>
-        <ImageContentHidden images={images} imageActive={numberSelect} />
+        <ImageContentHidden images={filterImages} imageActive={numberSelect} />
         <div className={styles.slider_image__text}>
           <SliderText
             title="Anime para todos"

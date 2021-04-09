@@ -10,7 +10,7 @@ import UserProfileRightContent from "components/organism/UserProfileRightContent
 import useGetProfile from "hooks/useGetProfile";
 import UserProfileProvider from "context/UserProfileContext/provider";
 import ProductCreateModal from "components/organism/ProductCreateModal";
-import { useState } from "react";
+import ProductCreateProvider from "context/ProductCreateContext/provider";
 
 type ProfileProps = {
   userId?: string;
@@ -34,8 +34,10 @@ const Profile: NextPage<ProfileProps> = ({ userId }) => {
               createdAt={userNowData.createdAt}
               image={userNowData.profileImage.url}
             />
-            <UserProfileRightContent />
-            <ProductCreateModal />
+            <ProductCreateProvider>
+              <UserProfileRightContent />
+              <ProductCreateModal />
+            </ProductCreateProvider>
           </UserProfileProvider>
         </div>
       )}

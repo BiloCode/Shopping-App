@@ -1,15 +1,16 @@
 import { createContext, useContext } from "react";
 
-import { UserDataType, UserImageProfileData } from "types/UserDataType";
+import { IUserModel } from "types/UserModel";
+import { FirebaseImage } from "types/FirebaseImage";
 
 type ProfileContextType = {
   isLoading: boolean;
-  userNowData: UserDataType;
+  userNowData: IUserModel;
   setLoading(state: boolean);
   userExists(_id: string);
-  setUserToStore(user: UserDataType);
-  setUserSearched(user: UserDataType);
-  updateUserImageStore(userId: string, profileImage: UserImageProfileData);
+  setUserToStore(user: IUserModel);
+  setUserSearched(user: IUserModel);
+  updateUserImageStore(userId: string, profileImage: FirebaseImage);
 };
 
 export const ProfileContext = createContext<ProfileContextType>({

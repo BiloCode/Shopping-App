@@ -8,9 +8,9 @@ import FormTextAreaControl from "components/molecules/FormTextAreaControl";
 import useUploadImagesProduct from "hooks/useUploadImagesProduct";
 import useCreateNewProduct from "hooks/useCreateNewProduct";
 
-import productCreateModalController from "hocs/productCreateModalController";
+import { useProductCreateContext } from "context/ProductCreateContext/context";
 
-type ProductCreateModalProps = {
+export type ProductCreateModalProps = {
   onClose?(): void;
 };
 
@@ -47,4 +47,14 @@ const ProductCreateModal: FC<ProductCreateModalProps> = ({ onClose }) => {
   );
 };
 
-export default memo(productCreateModalController(ProductCreateModal));
+const productController = (Component: FC<ProductCreateModalProps>) => () => {
+  const { userCreateModal, toggleUserCreateModal } = useProductCreateContext();
+
+  if (!userCreateModal) {
+    return null;
+  }
+
+  return <Component onClose={toggleUserCreateModal} />;
+};
+
+export default memo(productController(ProductCreateModal));

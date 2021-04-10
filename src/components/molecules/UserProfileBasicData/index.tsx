@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import firebase from "firebase";
 import styles from "./index.module.css";
 
@@ -7,7 +7,7 @@ import Title from "components/atoms/Title";
 
 export type UserProfileBasicDataProps = {
   fullName: string;
-  createdAt: firebase.firestore.Timestamp;
+  createdAt: string;
 };
 
 const UserProfileBasicData: FC<UserProfileBasicDataProps> = ({
@@ -18,7 +18,7 @@ const UserProfileBasicData: FC<UserProfileBasicDataProps> = ({
     year: "numeric",
     month: "long",
     day: "numeric",
-  }).format(createdAt.toDate());
+  }).format(new Date(createdAt));
 
   return (
     <div className={styles.user_profile_basic_data}>
@@ -28,4 +28,4 @@ const UserProfileBasicData: FC<UserProfileBasicDataProps> = ({
   );
 };
 
-export default UserProfileBasicData;
+export default memo(UserProfileBasicData);

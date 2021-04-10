@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import GetUserById from "core/GetUserById";
+import { normalFetch } from "core/CustomFetch";
 
 import { useProfileContext } from "context/ProfileContext/context";
 
@@ -27,11 +27,14 @@ const useGetProfile = (userId?: string) => {
       const userStored = userExists(_id);
 
       if (!userStored) {
-        const getUser = new GetUserById();
-        const user = await getUser.__invoke(_id);
+        const requestData = await normalFetch("/api/user/" + _id);
+        if (requestData.error) {
+          console.log(requestData.error);
+          return;
+        }
 
-        setUserToStore(user);
-        setUserSearched(user);
+        setUserToStore(requestData.user);
+        setUserSearched(requestData.user);
         setLoading(false);
         return;
       }

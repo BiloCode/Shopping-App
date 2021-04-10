@@ -1,21 +1,25 @@
-import firebase from "firebase";
-
 import { IUserModel } from "types/UserModel";
+import { Firestore } from "types/FirebaseTypes";
 
 class GetUserById {
-  public async __invoke(_id: string): Promise<IUserModel> {
-    const firestore = firebase.firestore();
-    const users = firestore.collection("users");
-    const request = await users.doc(_id).get();
+  private firestore: Firestore;
+
+  constructor(firestore: Firestore) {
+    this.firestore = firestore;
+  }
+
+  public async __invoke(userId: string) {
+    const users = this.firestore.collection("users");
+    const request = await users.doc(userId).get();
 
     if (!request.exists) return null;
 
     const data = request.data();
     const userData: IUserModel = {
-      _id: request.id,
+      _id: userId,
       email: data.email,
       fullName: data.fullName,
-      createdAt: data.createdAt,
+      createdAt: data.createdAt.toDate(),
       profileImage: data.profileImage,
       authenticationType: data.authenticationType,
     };

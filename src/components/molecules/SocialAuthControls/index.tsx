@@ -4,9 +4,9 @@ import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
 import SocialButton from "components/atoms/SocialButton";
-import GoogleAuthentication from "core/GoogleAuthentication";
+import GoogleAuthentication from "core/frontend/GoogleAuthentication";
 import ExistsUser from "core/ExistsUser";
-import CreateNewUser from "core/CreateNewUser";
+import CreateNewUser from "core/backend/CreateNewUser";
 
 const SocialAuthControls = () => {
   const goggleAuth = () => {

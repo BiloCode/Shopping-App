@@ -10,8 +10,8 @@ import NavigationBar from "components/organism/NavigationBar";
 import { PageModel } from "types/PageModel";
 import { ProductCardType } from "types/ProductCardType";
 
-import GetProductList from "core/GetProductList";
-import GetPageInformation from "core/GetPageInformation";
+import GetProductList from "core/backend/GetProductList";
+import GetPageInformation from "core/backend/GetPageInformation";
 import PageConfiguration from "components/templates/PageConfiguration";
 
 type HomeProps = {
@@ -19,23 +19,21 @@ type HomeProps = {
   list: ProductCardType[];
 };
 
-const Home: NextPage<HomeProps> = ({ list, page_info }) => {
-  return (
-    <PageConfiguration title="Inicio">
-      <NavigationBar />
-      <div className={styles.slider}>
-        <SliderImages images={page_info.bannerImages} />
+const Home: NextPage<HomeProps> = ({ list, page_info }) => (
+  <PageConfiguration title="Inicio">
+    <NavigationBar />
+    <div className={styles.slider}>
+      <SliderImages images={page_info.bannerImages} />
+    </div>
+    <div className={styles.container}>
+      <div className={styles.product_title_container}>
+        <Title type="extra-big">Nuestros Productos</Title>
       </div>
-      <div className={styles.container}>
-        <div className={styles.product_title_container}>
-          <Title type="extra-big">Nuestros Productos</Title>
-        </div>
-        <ProductList products={list} />
-      </div>
-      <Footer />
-    </PageConfiguration>
-  );
-};
+      <ProductList products={list} />
+    </div>
+    <Footer />
+  </PageConfiguration>
+);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const products = new GetProductList();

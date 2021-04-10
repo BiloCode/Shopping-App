@@ -2,34 +2,53 @@ import { FC, useEffect, useState } from "react";
 import firebase from "firebase";
 
 import { AuthContext } from "./context";
-import { UserSimpleData, UserImageProfileData } from "types/UserDataType";
 
-import GetUserByEmail from "core/GetUserByEmail";
+import { protectedFetch } from "core/CustomFetch";
+
+import { IUserAuthContext } from "types/UserModel";
+import { FirebaseImage } from "types/FirebaseImage";
 
 export const AuthProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<UserSimpleData>(null);
+  const [user, setUser] = useState<IUserAuthContext>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const _setAuthState = (user: IUserAuthContext) => {
+    setUser(() => user);
+    setIsLoading(() => false);
+  };
+
+  const authStateChanged = async (user) => {
+    if (!user) {
+      _setAuthState(null);
+      return;
+    }
+
+    const token = await user.getIdToken();
+    const requestData = await protectedFetch(token, {
+      url: "/api/auth",
+      method: "POST",
+      params: {
+        userId: user.uid,
+      },
+    });
+
+    if (requestData.error) {
+      console.log(requestData.error);
+      _setAuthState(null);
+      return;
+    }
+
+    _setAuthState(requestData.user);
+  };
 
   useEffect(() => {
     const auth = firebase.auth();
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const getUser = new GetUserByEmail();
-        const userData = await getUser.__invoke(user.email);
-
-        setUser(() => userData);
-        setIsLoading(() => false);
-        return;
-      }
-
-      setUser(() => null);
-      setIsLoading(() => false);
-    });
+    const unsubscribe = auth.onAuthStateChanged(authStateChanged);
 
     return () => unsubscribe();
   }, []);
 
-  const updateProfileImage = (profileImage: UserImageProfileData) => {
+  const updateProfileImage = (profileImage: FirebaseImage) => {
     setUser((user) => ({ ...user, profileImage }));
   };
 

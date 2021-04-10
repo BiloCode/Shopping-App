@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from "react";
 
 import { useAuthContext } from "context/AuthContext/context";
-
-import UploadProfileImage from "core/UploadProfileImage";
-import UpdateUserProfileImage from "core/UpdateUserProfileImage";
-import DeleteImage from "core/DeleteImage";
 import { useProfileContext } from "context/ProfileContext/context";
+
+import UploadProfileImage from "core/backend/UploadProfileImage";
+import UpdateUserProfileImage from "core/backend/UpdateUserProfileImage";
+import DeleteImage from "core/backend/DeleteImage";
 
 const useUploadProfileImage = (image: string) => {
   const { updateUserImageStore } = useProfileContext();
@@ -19,9 +19,9 @@ const useUploadProfileImage = (image: string) => {
     if (files.length !== 1) return;
 
     const image = files[0];
-    const imageType = image.type.split("/");
+    const imageType = image.type.split("/")[0];
 
-    if (imageType[0] !== "image") return;
+    if (imageType !== "image") return;
 
     setIsLoading(() => true);
 

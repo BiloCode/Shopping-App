@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
-import CreateNewUser from "./CreateNewUser";
-import ExistsUser from "./ExistsUser";
+import CreateNewUser from "../backend/CreateNewUser";
+import ExistsUser from "../ExistsUser";
 
 class GoogleAuthentication {
   private existsUser: ExistsUser;
@@ -28,7 +28,8 @@ class GoogleAuthentication {
         return;
       }
 
-      this.createNewUser.__invoke(
+      await this.createNewUser.__invoke(
+        user.uid,
         {
           email: user.email,
           fullName: user.displayName,

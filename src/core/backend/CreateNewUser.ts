@@ -10,15 +10,22 @@ type UserData = {
 };
 
 class CreateNewUser {
-  public async __invoke(user: UserData, authType: AuthenticationType) {
+  public async __invoke(
+    userId: string,
+    user: UserData,
+    authType: AuthenticationType
+  ) {
     const firestore = firebase.firestore();
 
     try {
-      await firestore.collection("users").add({
-        ...user,
-        authenticationType: authType,
-        createdAt: firebase.firestore.Timestamp.now(),
-      });
+      await firestore
+        .collection("users")
+        .doc(userId)
+        .set({
+          ...user,
+          authenticationType: authType,
+          createdAt: firebase.firestore.Timestamp.now(),
+        });
 
       return true;
     } catch (error) {

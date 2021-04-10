@@ -1,17 +1,9 @@
 import firebase from "firebase";
 
-import CreateNewUser from "../backend/CreateNewUser";
-import ExistsUser from "../ExistsUser";
+import { fetcher } from "core/CustomFetch";
+import { AuthenticationType } from "types/AuthenticationType";
 
 class GoogleAuthentication {
-  private existsUser: ExistsUser;
-  private createNewUser: CreateNewUser;
-
-  constructor(createNewUser: CreateNewUser, existsUser: ExistsUser) {
-    this.createNewUser = createNewUser;
-    this.existsUser = existsUser;
-  }
-
   public async __invoke() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -23,14 +15,15 @@ class GoogleAuthentication {
         return;
       }
 
-      const userExists = await this.existsUser.__invoke(user.email);
-      if (userExists) {
-        return;
-      }
+      const token = await user.getIdToken();
+      const authType: AuthenticationType = "google";
 
-      await this.createNewUser.__invoke(
-        user.uid,
-        {
+      const request = await fetcher(token, {
+        method: "POST",
+        url: "/api/user",
+        params: {
+          authType,
+          userId: user.uid,
           email: user.email,
           fullName: user.displayName,
           profileImage: {
@@ -38,8 +31,9 @@ class GoogleAuthentication {
             url: user.photoURL,
           },
         },
-        "google"
-      );
+      });
+
+      console.log(request);
     } catch (error) {
       console.log(error);
     }

@@ -5,14 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 
 import SocialButton from "components/atoms/SocialButton";
 import GoogleAuthentication from "core/frontend/GoogleAuthentication";
-import ExistsUser from "core/ExistsUser";
-import CreateNewUser from "core/backend/CreateNewUser";
 
 const SocialAuthControls = () => {
   const goggleAuth = () => {
-    const existsUser = new ExistsUser();
-    const createUser = new CreateNewUser();
-    const googleAuth = new GoogleAuthentication(createUser, existsUser);
+    const googleAuth = new GoogleAuthentication();
     googleAuth.__invoke();
   };
 
@@ -24,11 +20,7 @@ const SocialAuthControls = () => {
         icon={<AiFillFacebook />}
         text="Ingresar con Facebook"
       />
-      <SocialButton
-        icon={<FcGoogle />}
-        onClick={goggleAuth}
-        text="Ingresar con Google"
-      />
+      <SocialButton icon={<FcGoogle />} onClick={goggleAuth} text="Ingresar con Google" />
     </div>
   );
 };

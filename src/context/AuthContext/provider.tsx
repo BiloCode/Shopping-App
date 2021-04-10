@@ -3,7 +3,7 @@ import firebase from "firebase";
 
 import { AuthContext } from "./context";
 
-import { protectedFetch } from "core/CustomFetch";
+import { fetcher } from "core/CustomFetch";
 
 import { IUserAuthContext } from "types/UserModel";
 import { FirebaseImage } from "types/FirebaseImage";
@@ -24,7 +24,7 @@ export const AuthProvider: FC = ({ children }) => {
     }
 
     const token = await user.getIdToken();
-    const requestData = await protectedFetch(token, {
+    const requestData = await fetcher(token, {
       url: "/api/auth",
       method: "POST",
       params: {

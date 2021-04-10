@@ -1,30 +1,33 @@
-import firebase from "firebase";
-
+import { Firestore } from "types/FirebaseTypes";
 import { FirebaseImage } from "types/FirebaseImage";
 import { AuthenticationType } from "types/AuthenticationType";
 
-type UserData = {
-  email: string;
-  fullName: string;
-  profileImage: FirebaseImage;
+type CreateUserParams = {
+  id: string;
+  type: AuthenticationType;
+  data: {
+    email: string;
+    fullName: string;
+    profileImage: FirebaseImage;
+  };
 };
 
 class CreateNewUser {
-  public async __invoke(
-    userId: string,
-    user: UserData,
-    authType: AuthenticationType
-  ) {
-    const firestore = firebase.firestore();
+  private firestore: Firestore;
 
+  constructor(firestore: Firestore) {
+    this.firestore = firestore;
+  }
+
+  public async __invoke(params: CreateUserParams) {
     try {
-      await firestore
+      await this.firestore
         .collection("users")
-        .doc(userId)
+        .doc(params.id)
         .set({
-          ...user,
-          authenticationType: authType,
-          createdAt: firebase.firestore.Timestamp.now(),
+          ...params.data,
+          createdAt: new Date(),
+          authenticationType: params.type,
         });
 
       return true;

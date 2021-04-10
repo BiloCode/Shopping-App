@@ -3,9 +3,9 @@ import { ChangeEvent, useState } from "react";
 import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
 
+import DeleteImage from "core/backend/DeleteImage";
 import UploadProfileImage from "core/backend/UploadProfileImage";
 import UpdateUserProfileImage from "core/backend/UpdateUserProfileImage";
-import DeleteImage from "core/backend/DeleteImage";
 
 const useUploadProfileImage = (image: string) => {
   const { updateUserImageStore } = useProfileContext();

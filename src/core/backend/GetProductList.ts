@@ -1,17 +1,22 @@
-import firebase from "firebase";
+import { Firestore } from "types/FirebaseTypes";
 
 class GetProductList {
+  private firestore: Firestore;
+
+  constructor(firestore: Firestore) {
+    this.firestore = firestore;
+  }
+
   public async __invoke() {
     let list = [];
 
-    const doc = await firebase
-      .firestore()
+    const doc = await this.firestore
       .collection("products")
       .orderBy("createdAt", "desc")
       .limit(8)
       .get();
 
-    doc.forEach((doc: firebase.firestore.QueryDocumentSnapshot) => {
+    doc.forEach((doc) => {
       const document = doc.data();
       if (document.state === "waiting") {
         return;

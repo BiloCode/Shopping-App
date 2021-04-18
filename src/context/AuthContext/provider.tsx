@@ -3,29 +3,31 @@ import firebase from "firebase";
 
 import { AuthContext } from "./context";
 
+import { formatToken } from "core/FormatToken";
 import { fetcher } from "core/CustomFetch";
-
 import { IUserAuthContext } from "types/UserModel";
 import { FirebaseImage } from "types/FirebaseImage";
 
 export const AuthProvider: FC = ({ children }) => {
+  const [token, setToken] = useState<string>(null);
   const [user, setUser] = useState<IUserAuthContext>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const _setAuthState = (user: IUserAuthContext) => {
+  const _setAuthState = (user: IUserAuthContext, token: string) => {
     setUser(() => user);
+    setToken(() => token);
     setIsLoading(() => false);
   };
 
   const authStateChanged = async (user) => {
     if (!user) {
-      _setAuthState(null);
+      _setAuthState(null, null);
       return;
     }
 
-    const token = await user.getIdToken();
+    const token = formatToken(await user.getIdToken());
     const requestData = await fetcher(token, {
-      url: "/api/auth",
+      url: "/auth",
       method: "POST",
       params: {
         userId: user.uid,
@@ -34,11 +36,11 @@ export const AuthProvider: FC = ({ children }) => {
 
     if (requestData.error) {
       console.log(requestData.error);
-      _setAuthState(null);
+      _setAuthState(null, null);
       return;
     }
 
-    _setAuthState(requestData.user);
+    _setAuthState(requestData.user, token);
   };
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export const AuthProvider: FC = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, updateProfileImage }}>
+    <AuthContext.Provider value={{ user, isLoading, token, updateProfileImage }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,6 +1,7 @@
 import firebase from "firebase";
 
 import { fetcher } from "core/CustomFetch";
+import { formatToken } from "core/FormatToken";
 import { AuthenticationType } from "types/AuthenticationType";
 
 class GoogleAuthentication {
@@ -15,12 +16,12 @@ class GoogleAuthentication {
         return;
       }
 
-      const token = await user.getIdToken();
+      const token = formatToken(await user.getIdToken());
       const authType: AuthenticationType = "google";
 
       const request = await fetcher(token, {
         method: "POST",
-        url: "/api/user",
+        url: "/user",
         params: {
           authType,
           userId: user.uid,

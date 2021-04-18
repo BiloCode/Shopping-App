@@ -25,26 +25,21 @@ export const ProfileProvider: FC = ({ children }) => {
     }
   };
 
-  const updateUserImageStore = (
-    userId: string,
-    profileImage: FirebaseImage
-  ) => {
+  const updateUserImageStore = (userId: string, profileImage: FirebaseImage) => {
     const oldCache = [...userCacheStore];
-    const newCache: IUserModel[] = [];
-
-    for (let userStored of oldCache) {
-      if (userStored._id === userId) {
-        newCache.push({
-          ...userStored,
-          profileImage,
-        });
-        continue;
+    const newCache = oldCache.map((v) => {
+      if (v._id === userId) {
+        return { ...v, profileImage };
       }
 
-      newCache.push(userStored);
-    }
+      return v;
+    });
 
     setUserCacheStore(() => newCache);
+    setUser((user) => ({
+      ...user,
+      profileImage,
+    }));
   };
 
   return (

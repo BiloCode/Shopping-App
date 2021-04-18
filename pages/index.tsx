@@ -34,8 +34,8 @@ const Home: NextPage<HomeProps> = ({ list, page_info }) => (
 );
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const list = await simpleFetcher("/api/product");
-  const info = await simpleFetcher("/api/page/home");
+  const list = await simpleFetcher("/product");
+  const info = await simpleFetcher("/page/home");
 
   return {
     props: {

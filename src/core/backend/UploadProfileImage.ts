@@ -7,12 +7,12 @@ type UploadTask = firebase.storage.UploadTask;
 
 class UploadProfileImage {
   private UploadState(reference: UploadTask) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       reference.on(
         "state_changed",
         () => {},
         (error) => reject(error),
-        () => resolve(null)
+        () => resolve()
       );
     });
   }

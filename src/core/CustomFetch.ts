@@ -5,7 +5,7 @@ type BodyType = {
   method: MethodType;
 };
 
-const baseURL = "http://localhost:3000";
+const baseURL = "http://localhost:3000/api";
 
 export const fetcher = async (token: string, body: BodyType) => {
   const request = await fetch(baseURL + body.url, {

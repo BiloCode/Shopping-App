@@ -1,6 +1,6 @@
 import { FC } from "react";
 import classnames from "classnames";
-import styles from "./index.module.css";
+import * as S from "./styles";
 
 type ButtonSize = "normal" | "small";
 type ButtonColor = "normal" | "red";
@@ -19,16 +19,16 @@ const Button: FC<ButtonProps> = ({
   buttonSubmit,
   children,
 }) => (
-  <button
-    type={buttonSubmit ? "submit" : "button"}
+  <S.ContainerButton
     onClick={onClick}
-    className={classnames(styles.button, {
-      [styles.button__small]: type === "small",
-      [styles["button--red"]]: color === "red",
+    type={buttonSubmit ? "submit" : "button"}
+    className={classnames({
+      red: color === "red",
+      small: type === "small",
     })}
   >
     {children}
-  </button>
+  </S.ContainerButton>
 );
 
 Button.defaultProps = {

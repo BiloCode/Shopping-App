@@ -7,6 +7,12 @@ const tokenExists = (handler) => (req: NextApiRequest, res: NextApiResponse) => 
     return;
   }
 
+  const token = authorization.split(" ")[1];
+  if(!token) {
+    res.status(404).json({ error: "Token invalid" });
+    return;
+  }
+
   return handler(req, res);
 };
 

@@ -4,6 +4,7 @@ import { IUserAuthContext } from "types/UserModel";
 import { FirebaseImage } from "types/FirebaseImage";
 
 type AuthType = {
+  token: string;
   isLoading: boolean;
   user: IUserAuthContext;
   updateProfileImage(profileImage: FirebaseImage);
@@ -11,6 +12,7 @@ type AuthType = {
 
 export const AuthContext = createContext<AuthType>({
   user: null,
+  token: null,
   isLoading: true,
   updateProfileImage() {},
 });

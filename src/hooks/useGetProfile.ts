@@ -27,7 +27,7 @@ const useGetProfile = (userId?: string) => {
       const userStored = userExists(_id);
 
       if (!userStored) {
-        const requestData = await simpleFetcher("/api/user/" + _id);
+        const requestData = await simpleFetcher("/user/" + _id);
         if (requestData.error) {
           console.log(requestData.error);
           return;

@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 import { FirebaseImage } from "./FirebaseImage";
 import { AuthenticationType } from "./AuthenticationType";
 
@@ -12,5 +10,5 @@ export interface IUserModel extends IUserAuthContext {
   email: string;
   fullName: string;
   authenticationType: AuthenticationType;
-  createdAt: firebase.firestore.Timestamp;
+  createdAt: string;
 }

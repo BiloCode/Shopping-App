@@ -1,18 +1,19 @@
 import { FC, memo } from "react";
-import styles from "./index.module.css";
+import * as S from "./styles";
 
 import Label from "components/atoms/Label";
-import Input, { InputProps } from "components/atoms/Input";
+import Input, { InputDataType } from "components/atoms/Input";
 
-type FormControlProps = InputProps & {
+type FormControlProps = InputDataType & {
+  id?: string;
   labelText: string;
 };
 
-const FormControl: FC<FormControlProps> = ({ labelText, type }) => (
-  <div className={styles.auth_control}>
-    <Label>{labelText}</Label>
-    <Input type={type} />
-  </div>
+const FormControl: FC<FormControlProps> = ({ id, labelText, type, onChange }) => (
+  <S.ControlContainer>
+    <Label forControl={id}>{labelText}</Label>
+    <Input forControl={id} type={type} onChange={onChange} />
+  </S.ControlContainer>
 );
 
 export default memo(FormControl);

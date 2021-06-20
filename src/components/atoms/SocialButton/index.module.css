@@ -1,12 +1,13 @@
 .social_button {
   width: 100%;
-  height: 48px;
+  height: 56px;
   border: none;
   display: flex;
   outline: none;
   cursor: pointer;
   align-items: center;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
 }
 
 .social_button .icon,

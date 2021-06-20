@@ -1,6 +1,6 @@
 .container {
-  width: 320px;
-  margin: 0 auto;
+  width: 360px;
+  margin: 3em auto;
 }
 
 .title_container {
@@ -11,4 +11,11 @@
 .controls_container {
   display: grid;
   row-gap: 1.5em;
+}
+
+.back_icon_float {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2em;
 }

@@ -1,5 +1,7 @@
 .slider_text {
-  margin: 0 4em;
+  margin: 0 6em;
+  display: grid;
+  row-gap: 0.5em;
 }
 
 .slider_text__paragraph_limiter {

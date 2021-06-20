@@ -34,12 +34,10 @@ const NavigationUserArea = () => {
   if (!user) {
     return (
       <div className={styles.navigation_user_area__button}>
-        <Button onClick={NavigateToLogin} type="small">
+        <Button onClick={NavigateToLogin} ghost>
           Ingresa Ahora
         </Button>
-        <Button onClick={NavigateToRegister} type="small">
-          Registrate
-        </Button>
+        <Button onClick={NavigateToRegister}>Registrate</Button>
       </div>
     );
   }
@@ -50,7 +48,7 @@ const NavigationUserArea = () => {
         onClick={ToggleDropdown}
         className={styles.navigation_user_area__image_container}
       >
-        <CircularImage image={user.profileImage.url} />
+        <CircularImage type="big" image={user.profileImage.url} />
       </div>
       {isDropdownActive && (
         <ul className={styles.navigation_user_area__dropdown}>

@@ -1,12 +1,12 @@
 import { FC } from "react";
-import styles from "./index.module.css";
+import * as S from "./styles";
 
 type CircleIconProps = {
   onClick?(): void;
 };
 
 const CircleIcon: FC<CircleIconProps> = ({ onClick }) => (
-  <button onClick={onClick} className={styles.circle_icon}></button>
+  <S.ButtonContainer onClick={onClick}></S.ButtonContainer>
 );
 
 export default CircleIcon;

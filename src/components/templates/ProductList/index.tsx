@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./index.module.css";
 
 import { ProductCardType } from "types/ProductCardType";
@@ -23,4 +23,4 @@ const ProductList: FC<ProductListProps> = ({ products }) => (
   </div>
 );
 
-export default ProductList;
+export default memo(ProductList);

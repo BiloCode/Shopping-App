@@ -20,7 +20,11 @@ const SocialAuthControls = () => {
         icon={<AiFillFacebook />}
         text="Ingresar con Facebook"
       />
-      <SocialButton icon={<FcGoogle />} onClick={goggleAuth} text="Ingresar con Google" />
+      <SocialButton
+        icon={<FcGoogle />}
+        onClick={goggleAuth}
+        text="Ingresar con Google"
+      />
     </div>
   );
 };

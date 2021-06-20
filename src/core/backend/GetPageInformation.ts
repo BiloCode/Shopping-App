@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 import { PageModel } from "types/PageModel";
 import { Firestore } from "types/FirebaseTypes";
 

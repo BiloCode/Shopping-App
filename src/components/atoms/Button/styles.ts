@@ -27,6 +27,12 @@ export const ContainerButton = styled.button`
     }
   }
 
+  &.ghost {
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+  }
+
   &.small {
     font-size: 14px;
     padding: 4px 0;

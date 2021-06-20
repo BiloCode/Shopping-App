@@ -14,11 +14,7 @@ const NavigationListOption = () => {
   return (
     <ul className={styles.navigation_bar__list}>
       <NavOption text="Inicio" Icon={AiOutlineHome} onClick={NavigateToHome} />
-      <NavOption
-        text="Nosotros"
-        Icon={AiOutlineUser}
-        onClick={NavigateToAboutUs}
-      />
+      <NavOption text="Nosotros" Icon={AiOutlineUser} onClick={NavigateToAboutUs} />
       <NavOption
         text="Nuestros Productos"
         Icon={AiOutlineTag}

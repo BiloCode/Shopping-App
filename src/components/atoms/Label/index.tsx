@@ -1,8 +1,12 @@
 import { FC } from "react";
-import styles from "./index.module.css";
+import * as S from "./styles";
 
-const Label: FC = ({ children }) => (
-  <label className={styles.auth_label}>{children}</label>
+type LabelProps = {
+  forControl: string;
+};
+
+const Label: FC<LabelProps> = ({ children, forControl }) => (
+  <S.CustomLabel htmlFor={forControl}>{children}</S.CustomLabel>
 );
 
 export default Label;

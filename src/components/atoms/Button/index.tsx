@@ -6,6 +6,7 @@ type ButtonSize = "normal" | "small";
 type ButtonColor = "normal" | "red";
 
 type ButtonProps = {
+  ghost?: boolean;
   type?: ButtonSize;
   color?: ButtonColor;
   buttonSubmit?: boolean;
@@ -15,14 +16,16 @@ type ButtonProps = {
 const Button: FC<ButtonProps> = ({
   type,
   color,
+  ghost,
   onClick,
-  buttonSubmit,
   children,
+  buttonSubmit,
 }) => (
   <S.ContainerButton
     onClick={onClick}
     type={buttonSubmit ? "submit" : "button"}
     className={classnames({
+      ghost,
       red: color === "red",
       small: type === "small",
     })}

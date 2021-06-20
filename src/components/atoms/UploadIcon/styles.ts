@@ -1,4 +1,6 @@
-.icon_in_circle {
+import styled from "styled-components";
+
+export const LabelContainer = styled.label`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -7,16 +9,16 @@
   align-items: center;
   border: none;
   cursor: pointer;
-  background-color: var(--color-primary);
   outline: none;
-}
+  background-color: var(--color-primary);
+`;
 
-.icon_in_circle__icon {
+export const IconContainer = styled.span`
   color: #fff;
   line-height: 0;
   font-size: 1.3em;
-}
+`;
 
-.icon_in_circle__input {
+export const InputCustom = styled.input`
   display: none;
-}
+`;

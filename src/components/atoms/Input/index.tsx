@@ -1,15 +1,19 @@
-import { FC } from "react";
-import styles from "./index.module.css";
+import { ChangeEvent, FC } from "react";
+import * as S from "./styles";
 
 export type InputType = "text" | "password" | "number" | "email";
 
-export type InputProps = {
+export type InputDataType = {
   type?: InputType;
-  onChange?(): void;
+  onChange?(ev: ChangeEvent<HTMLInputElement>): void;
 };
 
-const Input: FC<InputProps> = ({ type }) => (
-  <input className={styles.auth_input} type={type} />
+export type InputProps = InputDataType & {
+  forControl: string;
+};
+
+const Input: FC<InputProps> = ({ type, onChange, forControl }) => (
+  <S.Input type={type} id={forControl} onChange={onChange} />
 );
 
 Input.defaultProps = {
